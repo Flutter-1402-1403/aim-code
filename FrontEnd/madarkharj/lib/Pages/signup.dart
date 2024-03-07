@@ -259,6 +259,7 @@ class SignupPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         textStyle: const TextStyle(
                           fontSize: 25,
+                          fontFamily: "Peyda"
                         )),
                     child: const Text("ثبت نام"),
                   ),

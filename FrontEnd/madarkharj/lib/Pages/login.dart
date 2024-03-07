@@ -47,7 +47,8 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(
                           color: Color.fromARGB(255, 39, 134, 100),
                           decoration: TextDecoration.none,
-                          fontSize: 40),
+                          fontSize: 40,
+                          fontFamily: "Peyda"),
                     ),
                   ],
                 ),
@@ -81,6 +82,11 @@ class LoginPage extends StatelessWidget {
                       filled: true,
                       fillColor: const Color(0xFFF3F3F3),
                       labelText: 'نام کاربری',
+                      labelStyle: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                        fontFamily: "Peyda",
+                      ),
                     ),
                   ),
                 ),
@@ -114,6 +120,11 @@ class LoginPage extends StatelessWidget {
                       filled: true,
                       fillColor: const Color(0xFFF3F3F3),
                       labelText: 'رمز عبور',
+                      labelStyle: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                        fontFamily: "Peyda",
+                      ),
                     ),
                   ),
                 ),
@@ -139,7 +150,13 @@ class LoginPage extends StatelessWidget {
                         textStyle: const TextStyle(
                           fontSize: 25,
                         )),
-                    child: const Text("ورود"),
+                    child: const Text(
+                      "ورود",
+                      style: TextStyle(
+                        fontFamily: "Peyda",
+                        fontSize: 25,
+                      ),
+                    ),
                   ),
                 ),
               ],
