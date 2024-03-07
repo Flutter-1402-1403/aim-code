@@ -41,8 +41,9 @@ class _StartScreen extends State<StartScreen> {
                   ";خرجاتو بگو ، قرضاتو بگیر",
                   style: TextStyle(
                     decoration: TextDecoration.none,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                    fontFamily: "Peyda",
                     color: Color.fromARGB(255, 39, 134, 100),
                   ),
                   textAlign: TextAlign.right,
@@ -51,8 +52,9 @@ class _StartScreen extends State<StartScreen> {
                   "!مدیریتش با ما",
                   style: TextStyle(
                     decoration: TextDecoration.none,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                    fontFamily: "Peyda",
                     color: Color.fromARGB(255, 39, 134, 100),
                   ),
                   textAlign: TextAlign.right,
@@ -73,7 +75,12 @@ class _StartScreen extends State<StartScreen> {
                         textStyle: const TextStyle(
                           fontSize: 25,
                         )),
-                    child: const Text("ثبت نام"),
+                    child: const Text(
+                      "ثبت نام",
+                      style: TextStyle(
+                        fontFamily: "Peyda",
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -95,7 +102,12 @@ class _StartScreen extends State<StartScreen> {
                         textStyle: const TextStyle(
                           fontSize: 25,
                         )),
-                    child: const Text("ورود"),
+                    child: const Text(
+                      "ورود",
+                      style: TextStyle(
+                        fontFamily: "Peyda",
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -104,43 +116,5 @@ class _StartScreen extends State<StartScreen> {
         ],
       ),
     );
-    // return Container(
-    //   color: Colors.white,
-    //   child: Column(
-    //     children: [
-    //       Image.asset("assets/images/wave.png", width: double.infinity,),
-    //       Container(
-    //           margin: const EdgeInsets.all(0),
-    //           child: const Column(
-    //             children: [
-    //               SizedBox(
-    //                 width: double.infinity,
-    //                 child: Text(
-    //                   ".خرجاتو بگو ، قرضاتو بگیر",
-    //                   style: TextStyle(
-    //                     fontSize: 26,
-    //                     fontWeight: FontWeight.bold,
-    //                     color: Color.fromARGB(255, 39, 134, 100),
-    //                   ),
-    //                   textAlign: TextAlign.end,
-    //                 ),
-    //               ),
-    //               SizedBox(
-    //                 width: double.infinity,
-    //                 child: Text(
-    //                   "!مدیریتش با ما",
-    //                   style: TextStyle(
-    //                     fontSize: 26,
-    //                     fontWeight: FontWeight.bold,
-    //                     color: Color.fromARGB(255, 39, 134, 100),
-    //                   ),
-    //                   textAlign: TextAlign.end,
-    //                 ),
-    //               ),
-    //             ],
-    //           ))
-    //     ],
-    //   ),
-    // );
   }
 }
