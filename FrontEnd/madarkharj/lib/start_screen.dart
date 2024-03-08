@@ -66,7 +66,7 @@ class _StartScreen extends State<StartScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(const SignupPage());
+                      Get.to( SignupPage());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -90,7 +90,7 @@ class _StartScreen extends State<StartScreen> {
                   width: double.infinity,
                   child: OutlinedButton(
                     onPressed: () {
-                      Get.to(const LoginPage());
+                      Get.to(LoginPage());
                     },
                     style: OutlinedButton.styleFrom(
                         foregroundColor:

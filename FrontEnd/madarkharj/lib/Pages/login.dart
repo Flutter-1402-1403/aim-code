@@ -4,8 +4,8 @@ import 'package:madarkharj/start_screen.dart';
 import 'package:dio/dio.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
+  LoginPage({super.key});
+  final _loginkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -55,77 +55,146 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(
                   height: 150,
                 ),
-                Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: TextFormField(
-                    textAlign: TextAlign.right,
-                    style: const TextStyle(fontSize: 19),
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0xFFDFDFDF),
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          50,
+                Form(
+                  key: _loginkey,
+                  child: Column(
+                    children: [
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'لطفا این فیلد را خالی نگذارید.';
+                            }
+                            return null;
+                          },
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            fontSize: 19,
+                          ),
+                          decoration: InputDecoration(
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF5151),
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF3B3B),
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                            ),
+                            errorStyle: const TextStyle(
+                              fontFamily: "Peyda",
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFFFF3B3B),
+                              fontSize: 14,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFDFDFDF),
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                100,
+                              ),
+                              borderSide: const BorderSide(
+                                width: 3,
+                                color: Color(0xFFDFDFDF),
+                              ),
+                            ), //<-- SEE HERE),
+                            filled: true,
+                            fillColor: const Color(0xFFF3F3F3),
+                            labelText: 'نام کاربری',
+                            labelStyle: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 18,
+                              fontFamily: "Peyda",
+                            ),
+                          ),
                         ),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          100,
-                        ),
-                        borderSide: const BorderSide(
-                          width: 3,
-                          color: Color(0xFFDFDFDF),
-                        ),
-                      ), //<-- SEE HERE),
-                      filled: true,
-                      fillColor: const Color(0xFFF3F3F3),
-                      labelText: 'نام کاربری',
-                      labelStyle: const TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 18,
-                        fontFamily: "Peyda",
+                      const SizedBox(
+                        height: 30,
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: TextFormField(
-                    textAlign: TextAlign.right,
-                    style: const TextStyle(fontSize: 19),
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0xFFDFDFDF),
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          50,
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'لطفا این فیلد را خالی نگذارید.';
+                            }
+                            return null;
+                          },
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(fontSize: 19),
+                          decoration: InputDecoration(
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF5151),
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF3B3B),
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                            ),
+                            errorStyle: const TextStyle(
+                              fontFamily: "Peyda",
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFFFF3B3B),
+                              fontSize: 14,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFDFDFDF),
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                100,
+                              ),
+                              borderSide: const BorderSide(
+                                width: 3,
+                                color: Color(0xFFDFDFDF),
+                              ),
+                            ), //<-- SEE HERE),
+                            filled: true,
+                            fillColor: const Color(0xFFF3F3F3),
+                            labelText: 'رمز عبور',
+                            labelStyle: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 18,
+                              fontFamily: "Peyda",
+                            ),
+                          ),
                         ),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          100,
-                        ),
-                        borderSide: const BorderSide(
-                          width: 3,
-                          color: Color(0xFFDFDFDF),
-                        ),
-                      ), //<-- SEE HERE),
-                      filled: true,
-                      fillColor: const Color(0xFFF3F3F3),
-                      labelText: 'رمز عبور',
-                      labelStyle: const TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 18,
-                        fontFamily: "Peyda",
-                      ),
-                    ),
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -135,9 +204,10 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
+                      if (_loginkey.currentState!.validate()) {}
                       final dio = Dio();
                       final response = await dio.post(
-                        'http://37.27.24.234:8000/auth/jwt/create',
+                        'http://http://193.151.150.132:8000/auth/jwt/create',
                         data: {"username": "mahdi", "password": "mehdi@1383"},
                       );
                       print(response.data);

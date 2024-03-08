@@ -6,13 +6,13 @@ import 'package:madarkharj/start_screen.dart';
 appRoutes() => [
       GetPage(
         name: '/login',
-        page: () => const LoginPage(),
+        page: () => LoginPage(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 100),
       ),
       GetPage(
         name: '/signup',
-        page: () => const SignupPage(),
+        page: () => SignupPage(),
         transition: Transition.rightToLeftWithFade,
         transitionDuration: const Duration(milliseconds: 100),
       ),
