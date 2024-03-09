@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "madarkharj",
+            "cwd": "FrontEnd\\madarkharj",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "madarkharj (profile mode)",
+            "cwd": "FrontEnd\\madarkharj",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "madarkharj (release mode)",
+            "cwd": "FrontEnd\\madarkharj",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

@@ -26,9 +26,21 @@ class _StartScreen extends State<StartScreen> {
         // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(
-            "assets/images/wave.png",
-            width: double.maxFinite,
+          Stack(
+            children: [
+              Image.asset(
+                "assets/images/wave.png",
+                width: double.maxFinite,
+              ),
+              Positioned(
+                top: 100,
+                right:120,
+                width: 150,
+                child: Image.asset(
+                  "assets/images/madarkharj_logo.png",
+                ),
+              )
+            ],
           ),
           Container(
             width: double.infinity,
@@ -66,7 +78,7 @@ class _StartScreen extends State<StartScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to( SignupPage());
+                      Get.to(const SignupPage());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -90,7 +102,7 @@ class _StartScreen extends State<StartScreen> {
                   width: double.infinity,
                   child: OutlinedButton(
                     onPressed: () {
-                      Get.to(LoginPage());
+                      Get.to(const LoginPage());
                     },
                     style: OutlinedButton.styleFrom(
                         foregroundColor:

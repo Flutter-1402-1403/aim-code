@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:madarkharj/start_screen.dart';
-import 'package:dio/dio.dart';
+import 'package:madarkharj/models/signup_form_data.dart';
+import 'package:madarkharj/services/signup_service.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -37,13 +38,14 @@ class _SignupPageState extends State<SignupPage> {
           // child:
           Column(
         mainAxisSize: MainAxisSize.max,
-        // mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 30),
             alignment: Alignment.topRight,
+            color: Colors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -441,19 +443,17 @@ class _SignupPageState extends State<SignupPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () async {
-                              if (_signupkey.currentState!.validate()) {}
-                              final dio = Dio();
-                              final response = await dio.post(
-                                'http://193.151.150.132:8000/user',
-                                data: {
-                                  "first_name": firstName.toString(),
-                                  "last_name": lastName.toString(),
-                                  "username": userName.toString(),
-                                  "password": password.toString(),
-                                },
+                              // checking if the form has any errors in validation
+
+                              if (!_signupkey.currentState!.validate()) return;
+
+                              SignUpFormData formData = SignUpFormData(
+                                firstName: firstName.text,
+                                lastName: lastName.text,
+                                username: userName.text,
+                                password: password.text,
                               );
-                              print(response.data);
-                              // Get.to(const LoginPage());
+                              SignupApiService.signUp(formData, context);
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor:

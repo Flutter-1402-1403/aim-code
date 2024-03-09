@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Get Route Managment',
       initialRoute: '/startscreen',
+      defaultTransition: Transition.cupertino,
+      opaqueRoute: Get.isOpaqueRouteDefault,
       getPages: appRoutes(),
     );
   }

@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/models/login_form_data.dart';
+import 'package:madarkharj/services/login_service.dart';
 import 'package:madarkharj/start_screen.dart';
-import 'package:dio/dio.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return _LoginPage();
+  }
+}
+
+class _LoginPage extends State<LoginPage> {
   final _loginkey = GlobalKey<FormState>();
+
+  final userName = TextEditingController();
+  final password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -62,6 +75,7 @@ class LoginPage extends StatelessWidget {
                       Directionality(
                         textDirection: TextDirection.rtl,
                         child: TextFormField(
+                          controller: userName,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'لطفا این فیلد را خالی نگذارید.';
@@ -132,6 +146,7 @@ class LoginPage extends StatelessWidget {
                       Directionality(
                         textDirection: TextDirection.rtl,
                         child: TextFormField(
+                          controller: password,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'لطفا این فیلد را خالی نگذارید.';
@@ -204,13 +219,13 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (_loginkey.currentState!.validate()) {}
-                      final dio = Dio();
-                      final response = await dio.post(
-                        'http://http://193.151.150.132:8000/auth/jwt/create',
-                        data: {"username": "mahdi", "password": "mehdi@1383"},
+                      if (!_loginkey.currentState!.validate()) return;
+
+                      LoginFormData formData = LoginFormData(
+                        username: userName.text,
+                        password: password.text,
                       );
-                      print(response.data);
+                      LoginApiService.signUp(formData, context);
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
