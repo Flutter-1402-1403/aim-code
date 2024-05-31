@@ -35,7 +35,6 @@ class SignupApiService {
             errorMessage,
             textAlign: TextAlign.right,
             style: const TextStyle(
-              fontFamily: "Peyda",
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -50,12 +49,11 @@ class SignupApiService {
             ".ثبت نام شما با موفقیت انجام شد",
             textAlign: TextAlign.right,
             style: TextStyle(
-              fontFamily: "Peyda",
               fontWeight: FontWeight.w800,
             ),
           ),
         );
-        Get.to(const LoginPage());
+        Get.to(() => const LoginPage());
       }
     } catch (error) {
       print(error);

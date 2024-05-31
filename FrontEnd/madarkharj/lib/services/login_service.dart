@@ -36,7 +36,7 @@ class LoginApiService {
           title: const Text(
             ".اطلاعات وارد شده نادرست است",
             textAlign: TextAlign.end,
-            style: TextStyle(fontFamily: "Peyda", fontWeight: FontWeight.w800),
+            style: TextStyle(fontWeight: FontWeight.w800),
           ),
         );
       } else if (response.statusCode == 200) {
@@ -45,7 +45,7 @@ class LoginApiService {
             key: "refresh", value: response.data["refresh"]);
         await secureStorage.write(
             key: "access", value: response.data["access"]);
-        Get.to(const WelcomePage());
+        Get.to(() => const WelcomePage());
       }
     } catch (error) {
       print(error);

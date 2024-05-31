@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:madarkharj/services/get_tokens.dart';
-import 'package:madarkharj/start_screen.dart';
+import 'package:madarkharj/Pages/start_screen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -60,7 +60,7 @@ class _WelcomePageState extends State<WelcomePage> {
       children: [
         IconButton(
           onPressed: () {
-            Get.to(const StartScreen());
+            Get.to(() => const StartScreen());
           },
           icon: const Icon(
             Icons.arrow_back,
@@ -79,7 +79,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 textAlign: TextAlign.right,
                 style: TextStyle(
                   decoration: TextDecoration.none,
-                  fontFamily: "Peyda",
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 39, 134, 100),
                 ),
@@ -94,7 +93,6 @@ class _WelcomePageState extends State<WelcomePage> {
                           _usersName,
                           style: const TextStyle(
                             decoration: TextDecoration.none,
-                            fontFamily: "Peyda",
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 39, 134, 100),
                           ),
@@ -103,7 +101,6 @@ class _WelcomePageState extends State<WelcomePage> {
                           'Initial State',
                           style: TextStyle(
                             decoration: TextDecoration.none,
-                            fontFamily: "Peyda",
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 39, 134, 100),
                           ),
