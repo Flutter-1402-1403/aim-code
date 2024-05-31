@@ -1,13 +1,29 @@
+
 {
-    "builds": [{
-        "src": "treasurer/wsgi.py",
+    "version": 2,
+    "builds": [
+      {
+        "src": "madarkharj/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
-    }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "treasurer/wsgi.py"
+      },
+      {
+        "src": "build_files.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "ui/staticfiles"
         }
-    ]
-}
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "madarkharj/wsgi.py"
+      }
+    ],
+    "outputDirectory": "madarkharj/staticfiles"
+  }
