@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:madarkharj/services/get_tokens.dart';
 import 'package:madarkharj/Pages/start_screen.dart';
 import 'package:circle_nav_bar/circle_nav_bar.dart';
+import 'package:madarkharj/widgets/group_info.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -111,53 +112,55 @@ class _WelcomePageState extends State<WelcomePage>
           print(int);
         },
       ),
-      
-      body: const SizedBox(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // const Text(
-                  //   "خوش آمدید",
-                  //   textAlign: TextAlign.right,
-                  //   style: TextStyle(
-                  //     decoration: TextDecoration.none,
-                  //     fontWeight: FontWeight.bold,
-                  //     color: Color.fromARGB(255, 39, 134, 100),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 50,
-                  // ),
-                  // _isLoading
-                  //     ? const CircularProgressIndicator()
-                  //     : _usersName.isNotEmpty
-                  //         ? Text(
-                  //             _usersName,
-                  //             style: const TextStyle(
-                  //               decoration: TextDecoration.none,
-                  //               fontWeight: FontWeight.bold,
-                  //               color: Color.fromARGB(255, 39, 134, 100),
-                  //             ),
-                  //           )
-                  //         : const Text(
-                  //             'Initial State',
-                  //             style: TextStyle(
-                  //               decoration: TextDecoration.none,
-                  //               fontWeight: FontWeight.bold,
-                  //               color: Color.fromARGB(255, 39, 134, 100),
-                  //             ),
-                  //           ),
-                  Text('!شما فعلا گروهی ندارید' , style: TextStyle(fontSize: 23,color: Color.fromARGB(255, 6, 157, 36)) ,)
-                ],
-              ),
-            )
-          ],
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GroupInfoCard(),
+              GroupInfoCard(),
+              GroupInfoCard(),
+              GroupInfoCard(),
+              Text(
+                '!شما فعلا گروهی ندارید',
+                style: TextStyle(
+                    fontSize: 23, color: Color.fromARGB(255, 6, 157, 36)),
+              )
+              // const Text(
+              //   "خوش آمدید",
+              //   textAlign: TextAlign.right,
+              //   style: TextStyle(
+              //     decoration: TextDecoration.none,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 39, 134, 100),
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 50,
+              // ),
+              // _isLoading
+              //     ? const CircularProgressIndicator()
+              //     : _usersName.isNotEmpty
+              //         ? Text(
+              //             _usersName,
+              //             style: const TextStyle(
+              //               decoration: TextDecoration.none,
+              //               fontWeight: FontWeight.bold,
+              //               color: Color.fromARGB(255, 39, 134, 100),
+              //             ),
+              //           )
+              //         : const Text(
+              //             'Initial State',
+              //             style: TextStyle(
+              //               decoration: TextDecoration.none,
+              //               fontWeight: FontWeight.bold,
+              //               color: Color.fromARGB(255, 39, 134, 100),
+              //             ),
+              //           ),
+            ],
+          ),
         ),
       ),
     );
