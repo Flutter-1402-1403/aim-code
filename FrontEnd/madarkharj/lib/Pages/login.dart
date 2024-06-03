@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:madarkharj/Pages/signup.dart';
 import 'package:madarkharj/models/login_form_data.dart';
 import 'package:madarkharj/services/login_service.dart';
 import 'package:madarkharj/widgets/appbar_widget.dart';
@@ -234,22 +236,14 @@ class _LoginPage extends State<LoginPage> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () async {
-                          if (!_loginkey.currentState!.validate()) return;
-
-                          LoginFormData formData = LoginFormData(
-                            username: userName.text,
-                            password: password.text,
-                          );
-                          LoginApiService.signUp(formData, context);
-                        },
+                        onPressed: () { Get.toNamed('signup'); },
                         style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                            backgroundColor: Colors.white,
                             side: const BorderSide(
                               width: 2.0,
                               color: Color.fromARGB(255, 6, 157, 36),
                             ),
-                            foregroundColor: Color.fromARGB(255, 6, 157, 36),
+                            foregroundColor: const Color.fromARGB(255, 6, 157, 36),
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             textStyle: const TextStyle(
                               fontSize: 25,

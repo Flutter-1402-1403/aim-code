@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:madarkharj/routes/routes.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Get Route Managment',
-      initialRoute: '/startscreen',
+      initialRoute: '/welcome',
       defaultTransition: Transition.rightToLeftWithFade,
       opaqueRoute: Get.isOpaqueRouteDefault,
       getPages: appRoutes(),
