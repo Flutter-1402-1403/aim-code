@@ -25,7 +25,4 @@ urlpatterns = [
     path('', include('users.api.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]
-# add at the last
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
