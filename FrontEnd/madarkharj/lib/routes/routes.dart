@@ -15,7 +15,7 @@ appRoutes() => [
         name: '/signup',
         page: () => const SignupPage(),
         transition: Transition.rightToLeftWithFade,
-        transitionDuration: const Duration(milliseconds: 300),
+        transitionDuration: const Duration(milliseconds: 600),
       ),
       GetPage(
         name: '/welcome',
@@ -32,7 +32,7 @@ appRoutes() => [
       GetPage(
         name: '/secondstartscreen',
         page: () => const StartScreen(),
-        transition: Transition.native,
+        transition: Transition.rightToLeftWithFade,
         transitionDuration: const Duration(milliseconds: 300),
       ),
     ];
