@@ -11,8 +11,8 @@ from users.api.serializers import UserSerializer, ChangePasswordSerializer, User
 from users.models import User
 from users.security import set_jwt_cookies, set_jwt_access_cookie, unset_jwt_cookies
 
-from .serializers import GroupSerializer
-from ..models import Group
+from .serializers import GroupSerializer, PaymentSerializer
+from ..models import Group, Payment
 
 
 class UserViewSet(ModelViewSet):
@@ -76,3 +76,8 @@ class TokenBlacklistView(APIView):
 class GroupViewSet(ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class PaymentViewSet(ModelViewSet):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentSerializer

@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from ..models import Group
+from ..models import Group, Payment
 
 from users.api.exceptions import PasswordDoesNotMatch, OldPasswordDoesNotMatch
 
@@ -48,6 +48,7 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.save()
         return user
     
+
 class GroupSerializer(serializers.ModelSerializer):
     # def to_representation(self, instance):
     #     data= super().to_representation(instance)
@@ -56,3 +57,11 @@ class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = "__all__"
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = "__all__"
+
+        

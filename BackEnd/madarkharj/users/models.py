@@ -13,3 +13,10 @@ class Group(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class Payment(models.Model):
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    name = models.CharField(max_length=255)
+    users = models.ManyToManyField(User)
+
