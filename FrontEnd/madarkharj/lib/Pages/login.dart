@@ -26,6 +26,7 @@ class _LoginPage extends State<LoginPage> {
       resizeToAvoidBottomInset: false,
       appBar: const CustomAppBar(
         title: "خوش آمدید",
+        backButton: true,
       ),
       body: SafeArea(
         child: SizedBox(
@@ -227,6 +228,7 @@ class _LoginPage extends State<LoginPage> {
                         child: const Text(
                           "ورود",
                           style: TextStyle(fontSize: 25, fontFamily: 'Peyda'),
+                          
                         ),
                       ),
                     ),

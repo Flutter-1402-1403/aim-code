@@ -36,6 +36,7 @@ class _SignupPageState extends State<SignupPage> {
       backgroundColor: Colors.white,
         appBar: const CustomAppBar(
           title: "ثبت نام",
+          backButton: true,
         ),
         body:SafeArea(
           child: SizedBox(
