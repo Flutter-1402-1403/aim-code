@@ -87,4 +87,18 @@ class WaitingListViewSet(ModelViewSet):
     queryset = WaitingList.objects.all()
     serializer_class = WaitingListSerializer
 
+    @action(detail=True, methods=['POST'])
+    def accept(self, request, pk=None):
+        entry = self.get_object()
+        entry.status = 'accepted'
+        entry.save()
+        return Response({'status' : 'accepted'}, status.HTTP_200_OK)
+    
+    @action(detail=True, methods=['POST'])
+    def reject(self, request, pk=None):
+        entry = self.get_object()
+        entry.status = 'rejected'
+        entry.save()
+        return Response({'status' : 'rejected'}, status.HTTP_200_OK)
+    
     
