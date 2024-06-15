@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const CustomAppBar({required this.title, super.key});
+  final bool backButton;
+  const CustomAppBar({required this.title, required this.backButton, super.key});
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.transparent,
       leadingWidth: 100,
-      leading: IconButton.filled(
+      leading: backButton?IconButton.filled(
         focusColor: const Color.fromARGB(255, 185, 185, 185),
         style: IconButton.styleFrom(
-          backgroundColor: const Color.fromRGBO(209, 209, 209, 1),
+          backgroundColor: const Color.fromARGB(255, 148, 148, 148),
         ),
         icon: const Icon(
           Icons.arrow_back_ios_new_rounded,
@@ -19,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: () {
           Navigator.of(context).pop();
         },
-      ),
+      ):null,
       titleSpacing: 30,
       title: Align(
         alignment: Alignment.centerRight,
