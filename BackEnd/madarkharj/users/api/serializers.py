@@ -50,10 +50,10 @@ class ChangePasswordSerializer(serializers.Serializer):
     
 
 class GroupSerializer(serializers.ModelSerializer):
-    # def to_representation(self, instance):
-    #     data= super().to_representation(instance)
-    #     data['users'] = UserSerializer(instance=instance.users.all(),many=True).data
-    #     return data
+    def to_representation(self, instance):
+        data= super().to_representation(instance)
+        data['user'] = UserSerializer(instance=instance.user.all(),many=True).data
+        return data
     class Meta:
         model = Group
         fields = "__all__"
@@ -70,4 +70,3 @@ class WaitingListSerializer(serializers.ModelSerializer):
         model = WaitingList
         fields = "__all__"
 
-        
