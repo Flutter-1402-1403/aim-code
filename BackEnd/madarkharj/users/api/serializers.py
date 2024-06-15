@@ -47,12 +47,18 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.set_password(self.validated_data['new_password'])
         user.save()
         return user
-    
+
+
+class UserGroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
+
 
 class GroupSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data= super().to_representation(instance)
-        data['user'] = UserSerializer(instance=instance.user.all(),many=True).data
+        data['user'] = UserGroupSerializer(instance=instance.user.all(),many=True).data
         return data
     class Meta:
         model = Group
