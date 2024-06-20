@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/Controllers/user_controller.dart';
 import 'package:madarkharj/Pages/groups.dart';
 import 'package:madarkharj/models/login_form_data.dart';
+import 'package:madarkharj/models/user_data.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -57,6 +59,9 @@ class LoginApiService {
       );
         
       if (responses.statusCode == 200) {
+        // Simulate a user login or data fetch
+            User newUser = User(id: responses.data['id'], username: responses.data['username'], firstName: responses.data['first_name'], lastName: responses.data['last_name'], dept:responses.data['dept'], demand: responses.data['demand']);
+            UserController().setUser(newUser);
         String userName = responses.data['username'];
        toastification.show(
           context: context,

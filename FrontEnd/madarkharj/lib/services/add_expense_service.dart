@@ -1,17 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/Pages/groups.dart';
+import 'package:madarkharj/models/create_expense.dart';
 import 'package:madarkharj/services/get_tokens.dart';
 import 'package:toastification/toastification.dart';
 
-class CreateGroupService {
-  static const String url = 'http://10.0.2.2:8000/groups/';
+class AddExpenseService {
+  static const String url = 'http://10.0.2.2:8000/payments/';
 
-  static Future<void> createGroup(data,context) async {
-    final Dio dio = Dio();
+  static Future<void> createGroup(AddExpenseModel data ,  context) async {
+     final Dio dio = Dio();
     Map<String, String> tokens = await getTokens();
     final access = tokens["access"];
-    
+    print (data);
     try {
       final response = await dio.post(
         url,
@@ -24,7 +26,6 @@ class CreateGroupService {
           },
         ),
       );
-
       if (response.statusCode == 201) {
         toastification.show(
           context: context,
@@ -32,13 +33,13 @@ class CreateGroupService {
           style: ToastificationStyle.flat,
           autoCloseDuration: const Duration(seconds: 5),
           title: const Text(
-            ".گروه با موفقیت ساخته شد",
+            ".خرج با موفقیت ساخته شد",
             textAlign: TextAlign.right,
             textDirection: TextDirection.rtl,
             style: TextStyle(fontWeight: FontWeight.w800),
           ),
         );
-        Navigator.of(context).pop();
+      Get.to(()=> const GroupsPage());
       } else {
         toastification.show(
           context: context,

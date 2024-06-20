@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/Pages/create_group.dart';
 import 'package:madarkharj/widgets/dotted_divider.dart';
 
 class WaitingListPage extends StatefulWidget {
@@ -37,7 +38,6 @@ class _WaitingListPageState extends State<WaitingListPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(224, 224, 224, 1),
         titleSpacing: 30,
         title: const Align(
           alignment: Alignment.centerRight,
@@ -50,12 +50,13 @@ class _WaitingListPageState extends State<WaitingListPage>
           ),
         ),
       ),
-      backgroundColor: const Color.fromRGBO(224, 224, 224, 1),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         backgroundColor: const Color.fromARGB(255, 6, 157, 36),
         child: const Icon(Icons.add_rounded, size: 45, color: Colors.white),
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => const CreateGroupPage());
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

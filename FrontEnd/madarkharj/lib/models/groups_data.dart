@@ -13,26 +13,26 @@ class Group {
   int id;
   String name;
   String description;
-  List<int> users;
+  List<dynamic> user;
 
   Group({
     required this.id,
     required this.name,
     required this.description,
-    required this.users,
+    required this.user,
   });
 
   factory Group.fromJson(Map<String, dynamic> json) => Group(
         id: json["id"],
         name: json["name"],
         description: json["description"],
-        users: List<int>.from(json["users"].map((x) => x)),
+        user: List<dynamic>.from(json["user"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "description": description,
-        "users": List<dynamic>.from(users.map((x) => x)),
+        "user": List<dynamic>.from(user.map((x) => x)),
       };
 }

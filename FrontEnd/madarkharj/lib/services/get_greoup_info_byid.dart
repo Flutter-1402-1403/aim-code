@@ -1,11 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:madarkharj/models/groups_data.dart';
 import 'package:madarkharj/services/get_tokens.dart';
-
-class GroupInfo {
-  static const String url = 'http://10.0.2.2:8000/groups';
-
-  static Future<List<Group>> getGroupsInfo() async {
+class GetGroupInfoById {
+  static Future<Group> getGroupsInfo(int groupId) async {
+    final url = 'http://10.0.2.2:8000/groups/$groupId';
     final Dio dio = Dio();
     Map<String, String> tokens = await getTokens();
     final access = tokens["access"];
@@ -22,7 +20,7 @@ class GroupInfo {
       );
 
       if (response.statusCode == 200) {
-        final List<Group> groups = groupFromJson(response.data);
+        final  groups =  Group.fromJson(response.data);
         return groups;
       } else {
         throw Exception('Failed to load groups: ${response.statusCode}');

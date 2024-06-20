@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/Controllers/user_controller.dart';
 import 'package:madarkharj/routes/routes.dart';
 
-void main() => runApp(const MyApp());
-
+void main() {
+  Get.put(UserController()); // Initialize the UserController
+  runApp(MyApp());
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -30,6 +33,8 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        scaffoldBackgroundColor: const Color.fromARGB(255,237, 247, 238),
+        appBarTheme: const AppBarTheme(backgroundColor: Color.fromARGB(255,237, 247, 238), )
       ),
     );
   }

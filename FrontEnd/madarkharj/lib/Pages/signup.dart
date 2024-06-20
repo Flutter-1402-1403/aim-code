@@ -33,7 +33,6 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
         appBar: const CustomAppBar(
           title: "ثبت نام",
           backButton: true,
@@ -50,7 +49,6 @@ class _SignupPageState extends State<SignupPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   alignment: Alignment.topRight,
-                  color: Colors.white,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

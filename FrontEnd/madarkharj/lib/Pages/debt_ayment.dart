@@ -1,9 +1,17 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/Controllers/user_controller.dart';
+import 'package:madarkharj/Pages/create_group.dart';
+import 'package:madarkharj/Pages/waiting_list.dart';
+import 'package:madarkharj/models/payment.dart';
+import 'package:madarkharj/services/get_tokens.dart';
+import 'package:madarkharj/services/payment.dart';
 import 'package:madarkharj/widgets/dotted_divider.dart';
+import 'package:toastification/toastification.dart';
 
 class DebtPaymentPage extends StatefulWidget {
   const DebtPaymentPage({super.key});
@@ -16,28 +24,25 @@ class _DebtPaymentPageState extends State<DebtPaymentPage>
     with SingleTickerProviderStateMixin {
   bool _isLoading = true;
   var _bottomNavIndex = 0;
-  // AnimationController _animationController;
-  // Animation<double> animation;
-  // CurvedAnimation curve;
+  late List<Payment> pay;
+
+final UserController userController = Get.find();
 
   final iconList = <IconData>[Icons.home_rounded, Icons.person_rounded];
   @override
   void initState() {
     super.initState();
-    _isLoading = true;
-    // GroupInfo.getGroupsInfo().then((groups) => {
-    //       setState(() {
-    //         _groups = groups;
-    //         _isLoading = false;
-    //       }),
-    //     });
+    PeymentService.getPayment(context).then((peyments) => {
+          setState(() {
+            pay = peyments;
+          }),
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(224, 224, 224, 1),
         titleSpacing: 30,
         title: const Align(
           alignment: Alignment.centerRight,
@@ -50,12 +55,13 @@ class _DebtPaymentPageState extends State<DebtPaymentPage>
           ),
         ),
       ),
-      backgroundColor: const Color.fromRGBO(224, 224, 224, 1),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         backgroundColor: const Color.fromARGB(255, 6, 157, 36),
         child: const Icon(Icons.add_rounded, size: 45, color: Colors.white),
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => const CreateGroupPage());
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
@@ -72,10 +78,12 @@ class _DebtPaymentPageState extends State<DebtPaymentPage>
         },
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: pay.length,
         itemBuilder: (context, index) {
-          return const CustomListItem(
-              amount: "50000", by: 'من', reason: 'شاممممممم');
+          return CustomListItem(
+              amount: pay[index].price,
+              by: pay[index].id,
+              reason: pay[index].name);
         },
       ),
     );
@@ -84,7 +92,7 @@ class _DebtPaymentPageState extends State<DebtPaymentPage>
 
 class CustomListItem extends StatelessWidget {
   final String amount;
-  final String by;
+  final int by;
   final String reason;
 
   const CustomListItem(
@@ -165,16 +173,60 @@ class CustomListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {
-                      // Handle approval
+                    onPressed: () async {
+                      final Dio dio = Dio();
+                      Map<String, String> tokens = await getTokens();
+                      final access = tokens["access"];
+                      final response = await dio.post(
+                        'http://10.0.2.2:8000/waiting-list/',
+                        data: {
+                          "status": "Pending",
+                          "user": null,
+                          "transaction": null
+                        },
+                        options: Options(
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'JWT $access',
+                          },
+                        ),
+                      );
+                      if (response.statusCode == 201) {
+                        toastification.show(
+                          context: context,
+                          type: ToastificationType.success,
+                          style: ToastificationStyle.flat,
+                          autoCloseDuration: const Duration(seconds: 5),
+                          title: const Text(
+                            "در لیست انطظار قرار گرفت",
+                            textAlign: TextAlign.right,
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                        );
+                        Get.to(() => const WaitingListPage());
+                      } else {
+                        toastification.show(
+                          context: context,
+                          type: ToastificationType.error,
+                          style: ToastificationStyle.flat,
+                          autoCloseDuration: const Duration(seconds: 5),
+                          title: const Text(
+                            "مشکلی پیش آمد",
+                            textAlign: TextAlign.right,
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(26),
                         ),
-                        minimumSize: Size(150, 35)
-                        ),
+                        minimumSize: Size(150, 35)),
                     child: const Text('پرداخت',
                         style: TextStyle(color: Colors.white, fontSize: 18)),
                   ),

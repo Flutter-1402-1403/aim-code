@@ -240,7 +240,7 @@ class _LoginPage extends State<LoginPage> {
                       child: ElevatedButton(
                         onPressed: () { Get.toNamed('signup'); },
                         style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: const Color.fromARGB(255,237, 247, 238),
                             side: const BorderSide(
                               width: 2.0,
                               color: Color.fromARGB(255, 6, 157, 36),

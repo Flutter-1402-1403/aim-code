@@ -1,21 +1,22 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:madarkharj/Pages/groups.dart';
+import 'package:madarkharj/models/create_expense.dart';
+import 'package:madarkharj/models/payment.dart';
 import 'package:madarkharj/services/get_tokens.dart';
 import 'package:toastification/toastification.dart';
 
-class CreateGroupService {
-  static const String url = 'http://10.0.2.2:8000/groups/';
+class PeymentService {
+  static const String url = 'http://10.0.2.2:8000/payments/';
 
-  static Future<void> createGroup(data,context) async {
-    final Dio dio = Dio();
+  static Future<List<Payment>> getPayment( context) async {
+     final Dio dio = Dio();
     Map<String, String> tokens = await getTokens();
     final access = tokens["access"];
-    
     try {
-      final response = await dio.post(
+      final response = await dio.get(
         url,
-        data:data,
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -24,21 +25,9 @@ class CreateGroupService {
           },
         ),
       );
-
-      if (response.statusCode == 201) {
-        toastification.show(
-          context: context,
-          type: ToastificationType.success,
-          style: ToastificationStyle.flat,
-          autoCloseDuration: const Duration(seconds: 5),
-          title: const Text(
-            ".گروه با موفقیت ساخته شد",
-            textAlign: TextAlign.right,
-            textDirection: TextDirection.rtl,
-            style: TextStyle(fontWeight: FontWeight.w800),
-          ),
-        );
-        Navigator.of(context).pop();
+      if (response.statusCode == 200) {
+        final  List<Payment> p =  Payment.fromJsonList(response.data);
+        return p;
       } else {
         toastification.show(
           context: context,
@@ -46,7 +35,7 @@ class CreateGroupService {
           style: ToastificationStyle.flat,
           autoCloseDuration: const Duration(seconds: 5),
           title: const Text(
-            ".در ساخت گروه مشگلی پیش آمد لطفا دوباره امتحان کنید",
+            ".مشکلی پیش آمد لطفا دوباره امتحان کنید",
             textAlign: TextAlign.right,
             textDirection: TextDirection.rtl,
             style: TextStyle(fontWeight: FontWeight.w800),
